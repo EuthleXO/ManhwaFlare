@@ -1,0 +1,36 @@
+# ManhwaFlare — Render free-plan friendly
+# Dashboard: New → Blueprint → connect this repo
+# Free tip: use Web Service (not Background Worker). Health server keeps process alive.
+
+services:
+  - type: web
+    name: manhwaflare-bot
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: PYTHONPATH=. python -m Manhwaflare.main
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: DATABASE_NAME
+        value: manhwaflare
+      - key: LOG_CHANNEL_ID
+        value: "-1003915347751"
+      - key: SUPPORT_GROUP
+        value: "https://t.me/+CZCfHr3AHKUwNTJk"
+      - key: SUPPORT_CHANNEL
+        value: "DragonByte_network"
+      - key: OWNER_USERNAME
+        value: "flexyy"
+      - key: CAPTION_TAG
+        value: "@ManhwaFlare"
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: RENDER
+        value: "true"
